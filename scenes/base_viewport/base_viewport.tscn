@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvuwf1ehh8dq2"]
+
+[ext_resource type="PackedScene" uid="uid://cx5q5cgg0tgvt" path="res://scenes/world/world.tscn" id="1_s2rcb"]
+
+[node name="BaseViewport" type="Node"]
+
+[node name="World" parent="." instance=ExtResource("1_s2rcb")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(2, 2)
