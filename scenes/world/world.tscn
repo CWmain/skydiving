@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx5q5cgg0tgvt"]
+
+[ext_resource type="PackedScene" uid="uid://dq7r54bos83hc" path="res://objects/skydiver/skydiver.tscn" id="1_u60c5"]
+
+[node name="World" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Skydiver" parent="." instance=ExtResource("1_u60c5")]

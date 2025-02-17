@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq7r54bos83hc"]
+
+[ext_resource type="Script" path="res://objects/skydiver/skydiver.gd" id="1_veyx1"]
+[ext_resource type="Texture2D" uid="uid://cp65c54pjoyog" path="res://objects/skydiver/tempSkydiver.png" id="2_60ayd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aceuh"]
+radius = 12.1655
+
+[node name="Skydiver" type="CharacterBody2D"]
+script = ExtResource("1_veyx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aceuh")
+
+[node name="TempSkydiver" type="Sprite2D" parent="."]
+texture = ExtResource("2_60ayd")
