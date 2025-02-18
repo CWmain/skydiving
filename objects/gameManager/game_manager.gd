@@ -17,11 +17,9 @@ const BIRD = preload("res://objects/bird/bird.tscn")
 var current_speed = 0:
 	set(value):
 		current_speed = max(value,minSpeed)
-		speedChange.emit(value)
 
 var current_height = 0;
 
-signal speedChange(curSpeed: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +30,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	current_height -= current_speed*delta
-	print(current_height)
+	#print(current_height)
 	if Input.is_action_just_pressed("spawnRandom"):
 		spawnRandom()
 		
@@ -41,4 +39,4 @@ func spawnRandom():
 	print("spawning bird")
 	var newBird = BIRD.instantiate()
 	add_child(newBird)
-	newBird.position = Vector2(randomGen.randi_range(0,640), 360)
+	newBird.position = Vector2(randomGen.randi_range(-20,660), 400)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://uydu54p3rh1e"]
+[gd_scene load_steps=8 format=3 uid="uid://uydu54p3rh1e"]
 
 [ext_resource type="Texture2D" uid="uid://c48vo1ofjsdvu" path="res://objects/bird/animated_bird.png" id="1_2loqj"]
 [ext_resource type="Script" path="res://objects/bird/bird.gd" id="1_sjs2c"]
+[ext_resource type="PackedScene" uid="uid://5hyv0faqwnxu" path="res://particles/feather_explosion.tscn" id="3_1wqlt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys0lp"]
 atlas = ExtResource("1_2loqj")
@@ -33,7 +34,7 @@ script = ExtResource("1_sjs2c")
 
 [node name="AnimatedBirdSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e506o")
-frame_progress = 0.863433
+frame_progress = 0.127849
 
 [node name="PlayerDetectable" type="Area2D" parent="."]
 collision_layer = 0
@@ -42,4 +43,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectable"]
 shape = SubResource("CircleShape2D_5xw7a")
 
+[node name="FeatherExplosion" parent="." instance=ExtResource("3_1wqlt")]
+
 [connection signal="area_entered" from="PlayerDetectable" to="." method="_on_player_detected"]
+[connection signal="finished" from="FeatherExplosion" to="." method="_on_feather_explosion_finished"]
