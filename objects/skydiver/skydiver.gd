@@ -5,6 +5,7 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 func _physics_process(delta):
+	print(position)
 	# Add the gravity.
 	var upDown = Input.get_axis("ui_up", "ui_down")
 	if upDown:
@@ -24,6 +25,6 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if position.y > -90:
+	if position.y > 240:
 		velocity.y += -90
 	move_and_slide()
