@@ -34,7 +34,7 @@ script = ExtResource("1_sjs2c")
 
 [node name="AnimatedBirdSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e506o")
-frame_progress = 0.127849
+frame_progress = 0.608936
 
 [node name="PlayerDetectable" type="Area2D" parent="."]
 collision_layer = 0

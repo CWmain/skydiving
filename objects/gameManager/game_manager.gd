@@ -36,7 +36,6 @@ func _physics_process(delta):
 		
 	
 func spawnRandom():
-	print("spawning bird")
 	var newBird = BIRD.instantiate()
 	add_child(newBird)
 	newBird.position = Vector2(randomGen.randi_range(-20,660), 400)

@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var FLY_SPEED = 600;
-@export var FALL_SPEED_REDUCTION = 1;
+@export var FLY_SPEED = 300;
+@export var FALL_SPEED_REDUCTION = 10;
 
 @onready var animated_bird_sprite = $AnimatedBirdSprite
 @onready var feather_explosion = $FeatherExplosion
@@ -17,13 +17,14 @@ func _ready():
 
 	if (GM.randomGen.randf() > 0.5):
 		FLY_SPEED *= -1
+		animated_bird_sprite.flip_h = true
 	skydiverSpeed = GM.current_speed
 
 func _physics_process(delta):
-	position += Vector2(FLY_SPEED*delta, -GM.current_speed)
+	position += Vector2(FLY_SPEED*delta, -GM.current_speed*delta)
 	
 	# Gone off the top of the screen, so we free it
-	if position.y < -50:
+	if position.y < -50 or position.x < -50 or position.x > 700:
 		queue_free()
 
 
@@ -31,9 +32,11 @@ func _on_player_detected(area):
 	# Reduce the fall speed
 	print("Reduce player fall speed")
 	GM.current_speed -= FALL_SPEED_REDUCTION
+	print("Cur Speed: %s" % str(GM.current_speed))
 	explodeBird()
 
 func explodeBird():
+	animated_bird_sprite.hide()
 	feather_explosion.emitting = true
 	
 
