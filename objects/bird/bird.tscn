@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://uydu54p3rh1e"]
+
+[ext_resource type="Texture2D" uid="uid://c48vo1ofjsdvu" path="res://objects/bird/animated_bird.png" id="1_2loqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys0lp"]
+atlas = ExtResource("1_2loqj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir4qe"]
+atlas = ExtResource("1_2loqj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e506o"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ys0lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir4qe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xw7a"]
+radius = 12.0416
+
+[node name="Bird" type="Node2D"]
+
+[node name="AnimatedBirdSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e506o")
+frame_progress = 0.449261
+
+[node name="PlayerDetectable" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectable"]
+shape = SubResource("CircleShape2D_5xw7a")
