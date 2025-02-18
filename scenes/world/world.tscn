@@ -28,5 +28,6 @@ color = Color(0.529412, 0.807843, 0.921569, 1)
 
 [node name="GameManager" parent="SubViewport" instance=ExtResource("1_gftqi")]
 startingSpeed = 550
+startingHeight = 30000
 
 [node name="Skydiver" parent="SubViewport" instance=ExtResource("1_u60c5")]

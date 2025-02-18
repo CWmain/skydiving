@@ -20,6 +20,7 @@ var current_speed = 0:
 
 var current_height = 0;
 
+var timePassed: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,8 +30,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	timePassed += delta
+	if timePassed > 0.05:
+		spawnRandom()
+		timePassed = 0
+		
 	current_height -= current_speed*delta
-	#print(current_height)
+
 	if Input.is_action_just_pressed("spawnRandom"):
 		spawnRandom()
 		
@@ -38,4 +44,4 @@ func _physics_process(delta):
 func spawnRandom():
 	var newBird = BIRD.instantiate()
 	add_child(newBird)
-	newBird.position = Vector2(randomGen.randi_range(-20,660), 400)
+	

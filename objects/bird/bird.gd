@@ -14,10 +14,11 @@ func _ready():
 	animated_bird_sprite.play("default")
 	GM = get_parent()
 	assert(GM != null, "No parent for bird")
-
+	position = Vector2(GM.randomGen.randi_range(-20,660), 400)
 	if (GM.randomGen.randf() > 0.5):
 		FLY_SPEED *= -1
 		animated_bird_sprite.flip_h = true
+
 	skydiverSpeed = GM.current_speed
 
 func _physics_process(delta):
