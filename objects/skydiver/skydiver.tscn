@@ -13,6 +13,7 @@ script = ExtResource("1_veyx1")
 texture = ExtResource("2_60ayd")
 
 [node name="Area2D" type="Area2D" parent="."]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_aceuh")

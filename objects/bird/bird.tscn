@@ -33,7 +33,7 @@ script = ExtResource("1_sjs2c")
 
 [node name="AnimatedBirdSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e506o")
-frame_progress = 0.581914
+frame_progress = 0.863433
 
 [node name="PlayerDetectable" type="Area2D" parent="."]
 collision_layer = 0
@@ -41,3 +41,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectable"]
 shape = SubResource("CircleShape2D_5xw7a")
+
+[connection signal="area_entered" from="PlayerDetectable" to="." method="_on_player_detected"]
