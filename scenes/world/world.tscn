@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx5q5cgg0tgvt"]
+[gd_scene load_steps=3 format=3 uid="uid://cx5q5cgg0tgvt"]
 
 [ext_resource type="PackedScene" uid="uid://dq7r54bos83hc" path="res://objects/skydiver/skydiver.tscn" id="1_u60c5"]
+[ext_resource type="PackedScene" uid="uid://uydu54p3rh1e" path="res://objects/bird/bird.tscn" id="2_7bduj"]
 
 [node name="World" type="SubViewportContainer"]
 anchors_preset = 15
@@ -26,3 +27,6 @@ grow_vertical = 2
 
 [node name="Skydiver" parent="SubViewport" instance=ExtResource("1_u60c5")]
 motion_mode = 1
+
+[node name="Bird" parent="." instance=ExtResource("2_7bduj")]
+position = Vector2(22, 192)

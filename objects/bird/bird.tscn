@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://uydu54p3rh1e"]
+[gd_scene load_steps=7 format=3 uid="uid://uydu54p3rh1e"]
 
 [ext_resource type="Texture2D" uid="uid://c48vo1ofjsdvu" path="res://objects/bird/animated_bird.png" id="1_2loqj"]
+[ext_resource type="Script" path="res://objects/bird/bird.gd" id="1_sjs2c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys0lp"]
 atlas = ExtResource("1_2loqj")
@@ -28,13 +29,15 @@ animations = [{
 radius = 12.0416
 
 [node name="Bird" type="Node2D"]
+script = ExtResource("1_sjs2c")
 
 [node name="AnimatedBirdSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e506o")
-frame_progress = 0.449261
+frame_progress = 0.581914
 
 [node name="PlayerDetectable" type="Area2D" parent="."]
-monitoring = false
+collision_layer = 0
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectable"]
 shape = SubResource("CircleShape2D_5xw7a")
