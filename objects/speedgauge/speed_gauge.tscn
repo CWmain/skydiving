@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc4gsqtp8e0b2"]
+
+[ext_resource type="Texture2D" uid="uid://26va0roj0im6" path="res://objects/speedgauge/gauge.png" id="1_e0uba"]
+[ext_resource type="Script" path="res://objects/speedgauge/speed_gauge.gd" id="1_pl4lm"]
+[ext_resource type="Texture2D" uid="uid://bemnceey7gr1g" path="res://objects/speedgauge/pointer.png" id="2_si187"]
+
+[node name="SpeedGauge" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+script = ExtResource("1_pl4lm")
+
+[node name="Gauge" type="Sprite2D" parent="."]
+position = Vector2(-16, 10)
+texture = ExtResource("1_e0uba")
+
+[node name="Pointer" type="Sprite2D" parent="."]
+position = Vector2(-5, 21)
+texture = ExtResource("2_si187")
+offset = Vector2(0, -4.5)

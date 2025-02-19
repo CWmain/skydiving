@@ -14,6 +14,7 @@ var randomGen: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Spawnable objects
 const BIRD = preload("res://objects/bird/bird.tscn")
+
 var current_speed = 0:
 	set(value):
 		current_speed = max(value,minSpeed)
@@ -21,6 +22,8 @@ var current_speed = 0:
 var current_height = 0;
 
 var timePassed: float = 0
+
+signal spawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,6 +45,6 @@ func _physics_process(delta):
 		
 	
 func spawnRandom():
-	var newBird = BIRD.instantiate()
-	add_child(newBird)
+	spawn.emit()
+	
 	
