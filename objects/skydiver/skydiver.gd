@@ -22,6 +22,9 @@ func _physics_process(delta):
 	
 	if position.y > 100:
 		position.y += -ascendSpeed*delta
+		
+	if position.y < 100:
+		position.y += ascendSpeed*delta
 	
 	# Limit plyaer movement to playable area 
 	limitPlayerMovement()

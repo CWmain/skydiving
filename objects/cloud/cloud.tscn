@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ojigoh4jwsl"]
+
+[ext_resource type="Shader" path="res://objects/cloud/cloud.gdshader" id="1_gaxcj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06oq8"]
+shader = ExtResource("1_gaxcj")
+
+[node name="Cloud" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 97.75)
+scale = Vector2(1, 196.5)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_06oq8")
+position = Vector2(60, -3)
+polygon = PackedVector2Array(-12, 69, -130, 32, -125, 1, -79, -19, -38, -13, 24, 22)
