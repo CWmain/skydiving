@@ -17,7 +17,10 @@ func _process(delta):
 	pass
 
 func spawnBird():
-	var newBird = BIRD.instantiate()
-	add_child(newBird)
-	var newCloud = CLOUD.instantiate()
-	add_child(newCloud)
+	var toSpawn: float = GM.randomGen.randf()
+	if toSpawn > 0.5:
+		var newBird = BIRD.instantiate()
+		add_child(newBird)
+	else:	
+		var newCloud = CLOUD.instantiate()
+		add_child(newCloud)

@@ -17,11 +17,12 @@ const BIRD = preload("res://objects/bird/bird.tscn")
 
 var current_speed = 0:
 	set(value):
-		current_speed = max(value,minSpeed)
+		current_speed = clamp(value,minSpeed, startingSpeed)
 
 var current_height = 0;
 
-var timePassed: float = 0
+var spawnTimer: float = 0
+var addSpeedTimer: float = 0
 
 signal spawn
 
@@ -33,10 +34,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	timePassed += delta
-	if timePassed > 0.05:
+	# Timers
+	spawnTimer += delta
+	addSpeedTimer += delta
+	
+	if spawnTimer > 0.05:
 		spawnRandom()
-		timePassed = 0
+		spawnTimer = 0
+		
+	if addSpeedTimer > 0.5:
+		current_speed += 1
+		addSpeedTimer = 0
 		
 	current_height -= current_speed*delta
 
