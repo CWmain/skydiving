@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqb8bwdbnr5gw"]
+[gd_scene load_steps=4 format=3 uid="uid://cqb8bwdbnr5gw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_wtjq8"]
 [ext_resource type="PackedScene" uid="uid://dc4gsqtp8e0b2" path="res://objects/speedgauge/speed_gauge.tscn" id="2_vcp77"]
+[ext_resource type="PackedScene" uid="uid://c0kofshqepq7i" path="res://objects/altometer/altometer.tscn" id="3_142au"]
 
 [node name="UI" type="SubViewportContainer"]
 offset_right = 40.0
@@ -16,5 +17,20 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="SpeedGauge" parent="SubViewport" instance=ExtResource("2_vcp77")]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 96.0
+grow_horizontal = 0
 scale = Vector2(3, 3)
+theme_override_constants/separation = 80
+
+[node name="SpeedGauge" parent="SubViewport/VBoxContainer" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("2_vcp77")]
+layout_mode = 2
+GM_Holder = NodePath("../../..")
+
+[node name="altometer" parent="SubViewport/VBoxContainer" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("3_142au")]
+layout_mode = 2
+GM_Holder = NodePath("../../..")
