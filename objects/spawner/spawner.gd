@@ -1,6 +1,7 @@
 extends Node
 
 const BIRD = preload("res://objects/bird/bird.tscn")
+const CLOUD = preload("res://objects/cloud/cloud.tscn")
 
 var GM: gameManager
 
@@ -18,3 +19,5 @@ func _process(delta):
 func spawnBird():
 	var newBird = BIRD.instantiate()
 	add_child(newBird)
+	var newCloud = CLOUD.instantiate()
+	add_child(newCloud)

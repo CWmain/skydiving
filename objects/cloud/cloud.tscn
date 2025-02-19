@@ -1,17 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ojigoh4jwsl"]
+[gd_scene load_steps=4 format=3 uid="uid://1ojigoh4jwsl"]
 
-[ext_resource type="Shader" path="res://objects/cloud/cloud.gdshader" id="1_gaxcj"]
+[ext_resource type="Texture2D" uid="uid://cxu20u3vgmppl" path="res://objects/cloud/cloud.png" id="1_fos3r"]
+[ext_resource type="Script" path="res://objects/cloud/cloud.gd" id="1_rmy66"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_06oq8"]
-shader = ExtResource("1_gaxcj")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30wq2"]
+radius = 20.0
+height = 72.0
 
 [node name="Cloud" type="Node2D"]
+script = ExtResource("1_rmy66")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 97.75)
-scale = Vector2(1, 196.5)
+[node name="Cloud" type="Sprite2D" parent="."]
+texture = ExtResource("1_fos3r")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-material = SubResource("ShaderMaterial_06oq8")
-position = Vector2(60, -3)
-polygon = PackedVector2Array(-12, 69, -130, 32, -125, 1, -79, -19, -38, -13, 24, 22)
+[node name="Area2D" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_30wq2")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_player_detected"]
