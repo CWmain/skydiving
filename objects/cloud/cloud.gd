@@ -2,6 +2,10 @@ extends Node2D
 
 @export var GM: gameManager
 @export var FALL_SPEED_REDUCTION: int = 1
+
+@onready var cloud_explosion = $CloudExplosion
+@onready var cloud = $Cloud
+
 func _ready():
 	GM = get_parent().GM
 	assert(GM != null, "No parent for bird")
@@ -22,4 +26,9 @@ func _on_player_detected(area):
 	explodeCloud()
 
 func explodeCloud():
+	cloud.hide()
+	cloud_explosion.emitting = true
+
+
+func _on_cloud_explosion_finished():
 	queue_free()

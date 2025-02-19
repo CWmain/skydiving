@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://conqlowcn7dju"]
+
+[ext_resource type="Texture2D" uid="uid://cxjhgtv6dosym" path="res://objects/cloud/cloudParticle.png" id="1_f7mql"]
+
+[node name="CloudExplosion" type="CPUParticles2D"]
+emitting = false
+amount = 40
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+texture = ExtResource("1_f7mql")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
