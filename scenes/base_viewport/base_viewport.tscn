@@ -38,3 +38,4 @@ GM = NodePath("../GameManager")
 [node name="GameManager" parent="." instance=ExtResource("3_alhey")]
 startingSpeed = 550
 startingHeight = 30000
+minSpeed = 50
