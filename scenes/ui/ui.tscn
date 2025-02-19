@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqb8bwdbnr5gw"]
+
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_wtjq8"]
+[ext_resource type="PackedScene" uid="uid://dc4gsqtp8e0b2" path="res://objects/speedgauge/speed_gauge.tscn" id="2_vcp77"]
+
+[node name="UI" type="SubViewportContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(320, 180)
+script = ExtResource("1_wtjq8")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="SpeedGauge" parent="SubViewport" instance=ExtResource("2_vcp77")]
+scale = Vector2(3, 3)

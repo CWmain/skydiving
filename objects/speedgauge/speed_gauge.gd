@@ -6,6 +6,8 @@ extends Control
 @onready var pointer = $Pointer
 
 @export var maxRotation: float = -PI/2
+@export var min_scale: int = 3
+
 var currentRotation: float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
