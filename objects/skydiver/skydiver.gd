@@ -27,13 +27,13 @@ func _physics_process(delta):
 		position.y = 360-GM.groundHeight
 		landed = true
 		var percentSpeed = (float(GM.lastSpeed-GM.minSpeed)/float(GM.startingSpeed))
-		if percentSpeed > 0.8:
+		if (percentSpeed > GM.percentSplatter):
 			print("Splatter")
-		elif(percentSpeed > 0.2):
+		elif (percentSpeed > GM.percentInjured):
 			print("Injured")
 		else:
 			print("Safe")
-		print("Now user has hit ground, select correct sprite, wait, then end game displaying speed as a score")
+		print("wait, then end game displaying speed as a score")
 	
 	# Prevent all movement when screen locked for the end of the game
 	if GM.lockScreen:

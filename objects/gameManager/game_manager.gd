@@ -39,6 +39,9 @@ signal landOnGround
 # Injured		Yellow >= -72.4			80%
 # Safe			Green >= -90			20%
 
+var percentSplatter: float = 0.8
+var percentInjured: float = 0.2
+var percentSafe: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
