@@ -9,12 +9,22 @@ const JUMP_VELOCITY = -400.0
 @export var GM_HOLDER: SubViewportContainer
 
 var GM: gameManager
-
+var fallSpeed = 0
 func _ready():
 	GM = GM_HOLDER.GM
 	assert(GM != null)
+	GM.landOnGround.connect(_landing)
 
 func _physics_process(delta):
+	if GM.endGame and GM.current_height > 0:
+		position.y += fallSpeed * delta
+		GM.current_height -= fallSpeed * delta
+		print("Postion: %s\nCurrent Height: %s" % [str(position), str(GM.current_height)] )
+		return
+	elif GM.endGame:
+		position.y = 360
+
+		return
 
 	# Add the gravity.
 	var upDown = Input.get_axis("ui_up", "ui_down")
@@ -41,3 +51,9 @@ func limitPlayerMovement():
 	position.x = min(position.x, 640)
 	position.y = max(position.y, 0)
 	position.y = min(position.y, 360)
+	
+func _landing():
+	fallSpeed = GM.current_speed
+	GM.current_speed = 0
+	GM.current_height -= position.y
+	print("End the game")

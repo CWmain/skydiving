@@ -1,8 +1,11 @@
 extends Node
 
+@export var spawnLimit: int = 10
+
 const BIRD = preload("res://objects/bird/bird.tscn")
 const CLOUD = preload("res://objects/cloud/cloud.tscn")
 
+var spawnCount: int = 0
 var GM: gameManager
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +20,9 @@ func _process(delta):
 	pass
 
 func spawnBird():
+	# Limit spawns to spawnLimit
+	if spawnCount > spawnLimit:
+		return
 	var toSpawn: float = GM.randomGen.randf()
 	if toSpawn > 0.5:
 		var newBird = BIRD.instantiate()
@@ -24,3 +30,4 @@ func spawnBird():
 	else:	
 		var newCloud = CLOUD.instantiate()
 		add_child(newCloud)
+	spawnCount += 1

@@ -10,9 +10,11 @@ radius = 21.0
 script = ExtResource("1_veyx1")
 
 [node name="TempSkydiver" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
 texture = ExtResource("2_60ayd")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -7)
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

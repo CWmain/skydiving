@@ -26,6 +26,7 @@ func _physics_process(delta):
 	
 	# Gone off the top of the screen, so we free it
 	if position.y < -50 or position.x < -50 or position.x > 700:
+		get_parent().spawnCount -= 1
 		queue_free()
 
 
@@ -39,8 +40,8 @@ func _on_player_detected(area):
 func explodeBird():
 	animated_bird_sprite.hide()
 	feather_explosion.emitting = true
-	
 
 
 func _on_feather_explosion_finished():
+	get_parent().spawnCount -= 1
 	queue_free()
