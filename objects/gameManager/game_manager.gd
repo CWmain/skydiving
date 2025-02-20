@@ -23,10 +23,12 @@ var current_speed = 0:
 	set(value):
 		current_speed = clamp(value,minSpeed, startingSpeed) if !lockScreen else max(value,0)
 
-var current_height = 0;
+var current_height: float = 0;
 var spawnedGround: bool = false
 var spawnTimer: float = 0
 var addSpeedTimer: float = 0
+
+var lastSpeed: int = 0
 
 signal spawn
 signal spawnGround
@@ -45,6 +47,8 @@ func _physics_process(delta):
 	
 	if !lockScreen and current_height <= 360-groundHeight:
 		lockScreen = true
+		lastSpeed = current_speed
+		current_speed = 0
 		landOnGround.emit()
 
 	# Timers
@@ -65,7 +69,7 @@ func _physics_process(delta):
 		spawnRandom()
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
-		current_speed = 50
+		#current_speed = 50
 	
 func spawnRandom():
 	spawn.emit()

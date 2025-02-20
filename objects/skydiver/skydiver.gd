@@ -19,8 +19,8 @@ func _ready():
 
 func _physics_process(delta):
 	if GM.lockScreen and position.y < 360-GM.groundHeight:
-		position.y += fallSpeed * delta
-		GM.current_height -= fallSpeed * delta
+		position.y += GM.lastSpeed * delta
+		GM.current_height -= GM.lastSpeed * delta
 		print("Postion: %s\nCurrent Height: %s" % [str(position), str(GM.current_height)] )
 		
 	elif GM.lockScreen and !landed:
@@ -58,7 +58,6 @@ func limitPlayerMovement():
 	position.y = max(position.y, 0)
 	position.y = min(position.y, 360)
 	
-func _landing():
-	fallSpeed = GM.current_speed
-	GM.current_speed = 0
+func _landing():	
+	# Adjust the current height with the characters height from floor
 	GM.current_height -= position.y

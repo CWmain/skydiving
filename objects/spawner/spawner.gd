@@ -29,7 +29,7 @@ func spawnBird():
 	if toSpawn > 0.5:
 		var newBird = BIRD.instantiate()
 		add_child(newBird)
-	else:	
+	elif GM.current_height > 500:	
 		var newCloud = CLOUD.instantiate()
 		add_child(newCloud)
 	spawnCount += 1
