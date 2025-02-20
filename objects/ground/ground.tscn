@@ -1,8 +1,12 @@
-[gd_scene format=3 uid="uid://lpsjbkthjsy"]
+[gd_scene load_steps=2 format=3 uid="uid://lpsjbkthjsy"]
+
+[ext_resource type="Script" path="res://objects/ground/ground.gd" id="1_gufxn"]
 
 [node name="Ground" type="Node2D"]
+script = ExtResource("1_gufxn")
 
 [node name="Ground" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(480, 30)
+custom_minimum_size = Vector2(640, 32)
 offset_right = 40.0
 offset_bottom = 40.0
+color = Color(0.239216, 0.666667, 0.25098, 1)

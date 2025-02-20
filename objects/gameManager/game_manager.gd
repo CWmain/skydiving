@@ -23,11 +23,12 @@ var current_speed = 0:
 		current_speed = clamp(value,minSpeed, startingSpeed) if !endGame else max(value,0)
 
 var current_height = 0;
-
+var spawnedGround: bool = false
 var spawnTimer: float = 0
 var addSpeedTimer: float = 0
 
 signal spawn
+signal spawnGround
 signal landOnGround
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +39,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if !spawnedGround and current_height <= 360:
+		spawnGround.emit()
+	
 	if !endGame and current_height <= 360-groundHeight:
 		endGame = true
 		landOnGround.emit()
@@ -60,7 +64,7 @@ func _physics_process(delta):
 		spawnRandom()
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
-		#current_speed = 100
+		#current_speed = 50
 	
 func spawnRandom():
 	spawn.emit()

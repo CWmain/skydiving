@@ -16,14 +16,13 @@ func _ready():
 	GM.landOnGround.connect(_landing)
 
 func _physics_process(delta):
-	if GM.endGame and GM.current_height > GM.groundHeight:
+	if GM.endGame and position.y < 360-GM.groundHeight:
 		position.y += fallSpeed * delta
 		GM.current_height -= fallSpeed * delta
 		print("Postion: %s\nCurrent Height: %s" % [str(position), str(GM.current_height)] )
 		return
 	elif GM.endGame:
 		position.y = 360-GM.groundHeight
-
 		return
 
 	# Add the gravity.
