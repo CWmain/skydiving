@@ -53,9 +53,9 @@ func _physics_process(delta):
 	limitPlayerMovement()
 
 func limitPlayerMovement():
-	position.x = max(position.x, 0)
-	position.x = min(position.x, 640)
-	position.y = max(position.y, 0)
+	position.x = max(position.x, 16)
+	position.x = min(position.x, 624)
+	position.y = max(position.y, 16)
 	position.y = min(position.y, 360)
 	
 func _landing():	

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc4gsqtp8e0b2"]
+[gd_scene load_steps=6 format=3 uid="uid://dc4gsqtp8e0b2"]
 
 [ext_resource type="Texture2D" uid="uid://26va0roj0im6" path="res://objects/speedgauge/gauge.png" id="1_e0uba"]
 [ext_resource type="Script" path="res://objects/speedgauge/speed_gauge.gd" id="1_pl4lm"]
+[ext_resource type="Shader" path="res://objects/speedgauge/speed_gauge.gdshader" id="2_mpdft"]
 [ext_resource type="Texture2D" uid="uid://bemnceey7gr1g" path="res://objects/speedgauge/pointer.png" id="2_si187"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h56po"]
+shader = ExtResource("2_mpdft")
 
 [node name="SpeedGauge" type="Control"]
 layout_mode = 3
@@ -13,6 +17,7 @@ grow_horizontal = 0
 script = ExtResource("1_pl4lm")
 
 [node name="Gauge" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_h56po")
 position = Vector2(-21, 15)
 texture = ExtResource("1_e0uba")
 
