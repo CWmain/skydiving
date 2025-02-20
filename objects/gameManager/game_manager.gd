@@ -10,6 +10,8 @@ class_name gameManager
 ## The smallest the skydivers speed can be reduced to
 @export var minSpeed: int = 0
 
+@export var groundHeight: int = 32
+
 var endGame: bool = false
 var randomGen: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -36,7 +38,7 @@ signal landOnGround
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if !endGame and current_height <= 360:
+	if !endGame and current_height <= 360-groundHeight:
 		endGame = true
 		landOnGround.emit()
 
