@@ -12,7 +12,8 @@ class_name gameManager
 
 @export var groundHeight: int = 32
 
-var endGame: bool = false
+# Stops other objects from moving up and makes the skydiver move down
+var lockScreen: bool = false
 var randomGen: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Spawnable objects
@@ -20,7 +21,7 @@ const BIRD = preload("res://objects/bird/bird.tscn")
 
 var current_speed = 0:
 	set(value):
-		current_speed = clamp(value,minSpeed, startingSpeed) if !endGame else max(value,0)
+		current_speed = clamp(value,minSpeed, startingSpeed) if !lockScreen else max(value,0)
 
 var current_height = 0;
 var spawnedGround: bool = false
@@ -42,19 +43,19 @@ func _physics_process(delta):
 	if !spawnedGround and current_height <= 360:
 		spawnGround.emit()
 	
-	if !endGame and current_height <= 360-groundHeight:
-		endGame = true
+	if !lockScreen and current_height <= 360-groundHeight:
+		lockScreen = true
 		landOnGround.emit()
 
 	# Timers
 	spawnTimer += delta
 	addSpeedTimer += delta
 	
-	if !endGame and spawnTimer > 0.05:
+	if !lockScreen and spawnTimer > 0.05:
 		spawnRandom()
 		spawnTimer = 0
 		
-	if !endGame and addSpeedTimer > 0.5:
+	if !lockScreen and addSpeedTimer > 0.5:
 		current_speed += 1
 		addSpeedTimer = 0
 		
