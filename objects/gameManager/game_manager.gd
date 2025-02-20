@@ -28,13 +28,13 @@ var spawnTimer: float = 0
 var addSpeedTimer: float = 0
 
 signal spawn
+signal landOnGround
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_speed = startingSpeed
 	current_height = startingHeight
 
-signal landOnGround
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
