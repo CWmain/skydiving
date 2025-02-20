@@ -10,18 +10,23 @@ extends Control
 @export var GM_Holder: SubViewportContainer
 	
 var currentRotation: float = 0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM = GM_Holder.GM
 	assert(GM!=null)
 	# Get the fraction of (current speed / starting speed) == (currentRotation / maxRotation)
-	pointer.rotation = (1 - float(GM.current_speed)/float(GM.startingSpeed)) * maxRotation
+	pointer.rotation = calculateRotation(GM.current_speed)
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GM.current_speed == 0:
-		pointer.rotation = (1 - float(GM.lastSpeed)/float(GM.startingSpeed)) * maxRotation
+		pointer.rotation = calculateRotation(GM.lastSpeed)
 	else:	
-		pointer.rotation = (1 - float(GM.current_speed)/float(GM.startingSpeed)) * maxRotation
+		pointer.rotation = calculateRotation(GM.current_speed)
+
+func calculateRotation(calculateFor: float) -> float:
+	return (1 - float(calculateFor-GM.minSpeed)/float(GM.startingSpeed)) * maxRotation

@@ -34,6 +34,12 @@ signal spawn
 signal spawnGround
 signal landOnGround
 
+# The below are the percentage values for each damage zone
+# Splatter		Red >= -17.5			20%
+# Injured		Yellow >= -72.4			80%
+# Safe			Green >= -90			20%
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_speed = startingSpeed
@@ -69,7 +75,7 @@ func _physics_process(delta):
 		spawnRandom()
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
-		#current_speed = 50
+		current_speed = 350
 	
 func spawnRandom():
 	spawn.emit()
