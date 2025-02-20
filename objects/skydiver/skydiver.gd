@@ -6,6 +6,13 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 @export var ascendSpeed: int = 100
+@export var GM_HOLDER: SubViewportContainer
+
+var GM: gameManager
+
+func _ready():
+	GM = GM_HOLDER.GM
+	assert(GM != null)
 
 func _physics_process(delta):
 
