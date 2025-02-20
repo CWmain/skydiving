@@ -8,6 +8,8 @@ extends Control
 @export var maxRotation: float = -PI/2
 @export var min_scale: int = 3
 @export var GM_Holder: SubViewportContainer
+
+var previousSpeed: int = 1
 	
 var currentRotation: float = 0
 # Called when the node enters the scene tree for the first time.
@@ -21,4 +23,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pointer.rotation = (1 - float(GM.current_speed)/float(GM.startingSpeed)) * maxRotation
+	if GM.current_speed == 0:
+		pointer.rotation = (1 - float(previousSpeed)/float(GM.startingSpeed)) * maxRotation
+	else:	
+		pointer.rotation = (1 - float(GM.current_speed)/float(GM.startingSpeed)) * maxRotation
+		previousSpeed = GM.current_speed

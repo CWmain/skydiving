@@ -55,4 +55,3 @@ func _landing():
 	fallSpeed = GM.current_speed
 	GM.current_speed = 0
 	GM.current_height -= position.y
-	print("End the game")
