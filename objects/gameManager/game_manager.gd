@@ -23,8 +23,9 @@ var current_speed: float = 0:
 	set(value):
 		current_speed = clamp(value,minSpeed, startingSpeed) if !lockScreen else max(value,0)
 
-var current_height: float = 0;
+var current_height: float = 0
 var spawnedGround: bool = false
+var oldHeight: float = 0
 var spawnTimer: float = 0
 var addSpeedTimer: float = 0
 
@@ -47,6 +48,7 @@ var percentSafe: float = 0.0
 func _ready():
 	current_speed = startingSpeed
 	current_height = startingHeight
+	oldHeight = startingHeight
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,14 +62,20 @@ func _physics_process(delta):
 		current_speed = 0
 		landOnGround.emit()
 
+	#Calculate height difference
+	var heightDiff = oldHeight - current_height
+
+	oldHeight = current_height
+	spawnTimer += heightDiff
+
+	
 	# Timers
-	spawnTimer += delta
 	addSpeedTimer += delta
 	
 	# Spawn random every set seconds
-	if !lockScreen and spawnTimer > 0.05:
+	if !lockScreen and spawnTimer >= 50.0:
 		spawnRandom()
-		spawnTimer = 0
+		spawnTimer -= 50.0
 	
 	# Increase speed every set seconds	
 	if !lockScreen and addSpeedTimer > 0.5:
@@ -80,6 +88,7 @@ func _physics_process(delta):
 		spawnRandom()
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
+		oldHeight = 1000
 		current_speed = 50
 	
 func spawnRandom():
