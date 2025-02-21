@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqb8bwdbnr5gw"]
+[gd_scene load_steps=5 format=3 uid="uid://cqb8bwdbnr5gw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_wtjq8"]
 [ext_resource type="PackedScene" uid="uid://dc4gsqtp8e0b2" path="res://objects/speedgauge/speed_gauge.tscn" id="2_vcp77"]
 [ext_resource type="PackedScene" uid="uid://c0kofshqepq7i" path="res://objects/altometer/altometer.tscn" id="3_142au"]
 [ext_resource type="Theme" uid="uid://d2cxgswnxv5r8" path="res://theme/menuTheme.tres" id="4_1d7u6"]
-[ext_resource type="PackedScene" uid="uid://cjhwqpo2re68m" path="res://menus/PauseScreen/pause_screen.tscn" id="5_degko"]
 
 [node name="UI" type="SubViewportContainer"]
 process_mode = 3
@@ -45,11 +44,4 @@ theme = ExtResource("4_1d7u6")
 theme_override_font_sizes/font_size = 60
 text = "Hello World!"
 
-[node name="PauseScreen" parent="SubViewport" instance=ExtResource("5_degko")]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-grow_vertical = 0
-size_flags_horizontal = 4
+[connection signal="pressed" from="SubViewport/Button" to="." method="_on_button_pressed"]
