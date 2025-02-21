@@ -3,7 +3,11 @@ extends SubViewportContainer
 @export var GM: gameManager
 
 @onready var sub_viewport = $SubViewport
-@export var min_scale: int = 3
+@export var base_scale: int = 3
+
+@onready var game_info = $SubViewport/gameInfo
+@onready var button = $SubViewport/Button
+
 
 const baseSize: Vector2 = Vector2(640, 360)
 
@@ -21,9 +25,11 @@ func _on_resize():
 		sub_viewport.size.x = max(baseSize.x, sub_viewport.size.x - baseSize.x)
 		sub_viewport.size.y = max(baseSize.y, sub_viewport.size.y - baseSize.y)
 		# Decrease scale of all childern
-		for child in sub_viewport.get_children():
-			child.scale.x = max(min_scale, child.scale.x-1)
-			child.scale.y = max(min_scale, child.scale.y-1)
+		game_info.scale.x = max(base_scale, game_info.scale.x-1)
+		game_info.scale.y = max(base_scale, game_info.scale.y-1)
+		
+		button.scale.x = max(1, button.scale.x-1)
+		button.scale.y = max(1, button.scale.y-1)
 		
 		
 	# Increase world size if an integer increase fits the current screen size

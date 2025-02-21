@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqb8bwdbnr5gw"]
+[gd_scene load_steps=5 format=3 uid="uid://cqb8bwdbnr5gw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_wtjq8"]
 [ext_resource type="PackedScene" uid="uid://dc4gsqtp8e0b2" path="res://objects/speedgauge/speed_gauge.tscn" id="2_vcp77"]
 [ext_resource type="PackedScene" uid="uid://c0kofshqepq7i" path="res://objects/altometer/altometer.tscn" id="3_142au"]
+[ext_resource type="Theme" uid="uid://d2cxgswnxv5r8" path="res://theme/menuTheme.tres" id="4_1d7u6"]
 
 [node name="UI" type="SubViewportContainer"]
 offset_right = 40.0
@@ -34,3 +35,10 @@ GM_Holder = NodePath("../../..")
 [node name="altometer" parent="SubViewport/gameInfo" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("3_142au")]
 layout_mode = 2
 GM_Holder = NodePath("../../..")
+
+[node name="Button" type="Button" parent="SubViewport"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("4_1d7u6")
+theme_override_font_sizes/font_size = 60
+text = "Hello World!"
