@@ -19,7 +19,7 @@ var randomGen: RandomNumberGenerator = RandomNumberGenerator.new()
 # Spawnable objects
 const BIRD = preload("res://objects/bird/bird.tscn")
 
-var current_speed = 0:
+var current_speed: float = 0:
 	set(value):
 		current_speed = clamp(value,minSpeed, startingSpeed) if !lockScreen else max(value,0)
 
