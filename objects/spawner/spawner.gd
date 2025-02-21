@@ -23,8 +23,8 @@ func _process(delta):
 
 func spawnBird():
 	# Limit spawns to spawnLimit
-	if spawnCount > spawnLimit:
-		return
+	#if spawnCount > spawnLimit:
+	#	return
 	var toSpawn: float = GM.randomGen.randf()
 	if toSpawn > 0.5:
 		var newBird = BIRD.instantiate()
