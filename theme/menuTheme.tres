@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://d2cxgswnxv5r8"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://d2cxgswnxv5r8"]
 
 [ext_resource type="Texture2D" uid="uid://d0adq0mvmxdxt" path="res://theme/buttonGraphics/disabled.png" id="1_f6blj"]
 [ext_resource type="FontFile" uid="uid://d0h2cfua7vmrf" path="res://theme/Jersey15-Regular.ttf" id="1_laeas"]
@@ -42,6 +42,13 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yotoe"]
+texture = ExtResource("1_f6blj")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
 [resource]
 default_font = ExtResource("1_laeas")
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -66,3 +73,5 @@ Button/styles/focus = SubResource("StyleBoxTexture_lr0nn")
 Button/styles/hover = SubResource("StyleBoxTexture_b0llb")
 Button/styles/normal = SubResource("StyleBoxTexture_ftguk")
 Button/styles/pressed = SubResource("StyleBoxTexture_isckr")
+HSlider/styles/slider = SubResource("StyleBoxTexture_yotoe")
+Label/font_sizes/font_size = 32

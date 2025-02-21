@@ -1,5 +1,7 @@
 extends Control
 
+@onready var settings_menu = $SettingsMenu
+@onready var v_box_container = $VBoxContainer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,10 +24,16 @@ func _on_retry_pressed():
 	get_tree().reload_current_scene()
 
 func _on_settings_pressed():
-	print("show settings")
+	v_box_container.hide()
+	settings_menu.show()
 	
 
 
 
 func _on_main_menu_pressed():
 	print("Go to main menu")
+
+
+func _on_settings_menu_closed_settings():
+	settings_menu.hide()
+	v_box_container.show()

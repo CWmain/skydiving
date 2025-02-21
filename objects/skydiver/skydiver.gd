@@ -68,7 +68,7 @@ func limitPlayerMovement():
 	position.x = max(position.x, 16)
 	position.x = min(position.x, 624)
 	position.y = max(position.y, 16)
-	position.y = min(position.y, 360)
+	position.y = min(position.y, 320)
 	
 func _landing():	
 	# Adjust the current height with the characters height from floor
