@@ -80,7 +80,7 @@ func _physics_process(delta):
 		spawnRandom()
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
-		current_speed = 350
+		current_speed = 50
 	
 func spawnRandom():
 	spawn.emit()

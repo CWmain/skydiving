@@ -8,6 +8,12 @@ const JUMP_VELOCITY = -400.0
 @export var ascendSpeed: int = 100
 @export var GM_HOLDER: SubViewportContainer
 
+## Skydiver graphics
+@onready var falling_skydiver = $FallingSkydiver
+@onready var safe_skydiver = $SafeSkydiver
+@onready var injured_skydiver = $InjuredSkydiver
+@onready var splatter = $Splatter
+
 var landed: bool = false
 var GM: gameManager
 var fallSpeed = 0
@@ -28,12 +34,16 @@ func _physics_process(delta):
 		position.y = 360-GM.groundHeight
 		landed = true
 		var percentSpeed = (float(GM.lastSpeed-GM.minSpeed)/float(GM.startingSpeed))
+		falling_skydiver.hide()
 		if (percentSpeed > GM.percentSplatter):
+			splatter.show()
 			print("Splatter")
 		elif (percentSpeed > GM.percentInjured):
+			injured_skydiver.show()
 			print("Injured")
 		else:
 			print("Safe")
+			safe_skydiver.show()
 		print("wait, then end game displaying speed as a score")
 	
 	# Prevent all movement when screen locked for the end of the game
