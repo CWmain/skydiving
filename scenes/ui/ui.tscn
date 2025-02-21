@@ -17,7 +17,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport"]
+[node name="gameInfo" type="VBoxContainer" parent="SubViewport"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -27,10 +27,10 @@ grow_horizontal = 0
 scale = Vector2(3, 3)
 theme_override_constants/separation = 80
 
-[node name="SpeedGauge" parent="SubViewport/VBoxContainer" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("2_vcp77")]
+[node name="SpeedGauge" parent="SubViewport/gameInfo" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("2_vcp77")]
 layout_mode = 2
 GM_Holder = NodePath("../../..")
 
-[node name="altometer" parent="SubViewport/VBoxContainer" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("3_142au")]
+[node name="altometer" parent="SubViewport/gameInfo" node_paths=PackedStringArray("GM_Holder") instance=ExtResource("3_142au")]
 layout_mode = 2
 GM_Holder = NodePath("../../..")
