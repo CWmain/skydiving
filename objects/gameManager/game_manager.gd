@@ -64,10 +64,12 @@ func _physics_process(delta):
 	spawnTimer += delta
 	addSpeedTimer += delta
 	
+	# Spawn random every set seconds
 	if !lockScreen and spawnTimer > 0.05:
 		spawnRandom()
 		spawnTimer = 0
-		
+	
+	# Increase speed every set seconds	
 	if !lockScreen and addSpeedTimer > 0.5:
 		current_speed += 1
 		addSpeedTimer = 0

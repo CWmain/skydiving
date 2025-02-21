@@ -22,7 +22,8 @@ func _physics_process(delta):
 		position.y += GM.lastSpeed * delta
 		GM.current_height -= GM.lastSpeed * delta
 		#print("Postion: %s\nCurrent Height: %s" % [str(position), str(GM.current_height)] )
-		
+	
+	# Occurs when we first land due to elif with above statement
 	elif GM.lockScreen and !landed:
 		position.y = 360-GM.groundHeight
 		landed = true

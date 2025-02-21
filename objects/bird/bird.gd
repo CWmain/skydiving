@@ -32,7 +32,6 @@ func _physics_process(delta):
 
 func _on_player_detected(area):
 	# Reduce the fall speed
-	print("Reduce player fall speed")
 	GM.current_speed -= FALL_SPEED_REDUCTION
 	print("Cur Speed: %s" % str(GM.current_speed))
 	explodeBird()
