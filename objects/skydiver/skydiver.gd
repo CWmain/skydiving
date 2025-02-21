@@ -50,16 +50,10 @@ func _physics_process(delta):
 	if GM.lockScreen:
 		return
 
-	# Add the gravity.
-	var upDown = Input.get_axis("up", "down")
-	if upDown:
-		position.y += upDown * SPEED*delta
-
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	var upDown = Input.get_axis("up", "down")
 	var leftRight = Input.get_axis("left", "right")
-	if leftRight:
-		position.x += leftRight * SPEED * delta
+	position += Vector2(leftRight, upDown).normalized()*SPEED*delta
 	
 	if position.y > 100:
 		position.y += -ascendSpeed*delta
