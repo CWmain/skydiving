@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_wtjq8"]
 [ext_resource type="PackedScene" uid="uid://dc4gsqtp8e0b2" path="res://objects/speedgauge/speed_gauge.tscn" id="2_vcp77"]
 [ext_resource type="PackedScene" uid="uid://c0kofshqepq7i" path="res://objects/altometer/altometer.tscn" id="3_142au"]
-[ext_resource type="Theme" uid="uid://d2cxgswnxv5r8" path="res://theme/menuTheme.tres" id="4_1d7u6"]
+[ext_resource type="PackedScene" uid="uid://pyrf76cgs0fg" path="res://menus/pauseMenu/pause_menu.tscn" id="4_hhp71"]
 
 [node name="UI" type="SubViewportContainer"]
 process_mode = 3
@@ -37,11 +37,5 @@ GM_Holder = NodePath("../../..")
 layout_mode = 2
 GM_Holder = NodePath("../../..")
 
-[node name="Button" type="Button" parent="SubViewport"]
-offset_right = 8.0
-offset_bottom = 8.0
-theme = ExtResource("4_1d7u6")
-theme_override_font_sizes/font_size = 60
-text = "Hello World!"
-
-[connection signal="pressed" from="SubViewport/Button" to="." method="_on_button_pressed"]
+[node name="PauseMenu" parent="SubViewport" instance=ExtResource("4_hhp71")]
+visible = false

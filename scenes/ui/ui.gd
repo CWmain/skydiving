@@ -6,8 +6,8 @@ extends SubViewportContainer
 @export var base_scale: int = 3
 
 @onready var game_info = $SubViewport/gameInfo
-@onready var button = $SubViewport/Button
-@onready var pause_screen = $SubViewport/PauseScreen
+
+@onready var pause_screen = $SubViewport/PauseMenu
 
 
 const baseSize: Vector2 = Vector2(640, 360)
@@ -33,9 +33,6 @@ func _on_resize():
 		# Decrease scale of all childern
 		game_info.scale.x = max(base_scale, game_info.scale.x-1)
 		game_info.scale.y = max(base_scale, game_info.scale.y-1)
-		
-		button.scale.x = max(1, button.scale.x-1)
-		button.scale.y = max(1, button.scale.y-1)
 		
 		pause_screen.scale.x = max(1, pause_screen.scale.x-1)
 		pause_screen.scale.y = max(1, pause_screen.scale.y-1)
