@@ -7,6 +7,7 @@ extends SubViewportContainer
 
 @onready var game_info = $SubViewport/gameInfo
 @onready var button = $SubViewport/Button
+@onready var pause_screen = $SubViewport/PauseScreen
 
 
 const baseSize: Vector2 = Vector2(640, 360)
@@ -16,6 +17,11 @@ func _ready():
 	assert(GM != null, "GM not assigned to UI viewport")
 	get_tree().get_root().size_changed.connect(_on_resize)
 	_on_resize()
+
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		pause_screen.show()
+		get_tree().paused = true
 
 func _on_resize():
 	var windowSize: Vector2 = DisplayServer.window_get_size()
@@ -30,6 +36,9 @@ func _on_resize():
 		
 		button.scale.x = max(1, button.scale.x-1)
 		button.scale.y = max(1, button.scale.y-1)
+		
+		pause_screen.scale.x = max(1, pause_screen.scale.x-1)
+		pause_screen.scale.y = max(1, pause_screen.scale.y-1)
 		
 		
 	# Increase world size if an integer increase fits the current screen size

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjhwqpo2re68m"]
+
+[ext_resource type="Script" path="res://menus/PauseScreen/pause_screen.gd" id="1_sg58h"]
+[ext_resource type="Theme" uid="uid://d2cxgswnxv5r8" path="res://theme/menuTheme.tres" id="2_3mhcg"]
+[ext_resource type="PackedScene" uid="uid://djgeumgvwgelt" path="res://menus/Settings/settings.tscn" id="2_yuyyq"]
+
+[node name="PauseScreen" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sg58h")
+
+[node name="Settings" parent="." instance=ExtResource("2_yuyyq")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuItems" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -202.0
+offset_right = 161.5
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_3mhcg")
+theme_override_constants/separation = 16
+
+[node name="Resume" type="Button" parent="MenuItems"]
+layout_mode = 2
+text = "Resume
+"
+
+[node name="Retry" type="Button" parent="MenuItems"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Settings" type="Button" parent="MenuItems"]
+layout_mode = 2
+text = "Settings"
+
+[node name="MainMenu" type="Button" parent="MenuItems"]
+layout_mode = 2
+text = "Main Menu"
+
+[connection signal="pressed" from="MenuItems/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuItems/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="MenuItems/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuItems/MainMenu" to="." method="_on_main_menu_pressed"]
