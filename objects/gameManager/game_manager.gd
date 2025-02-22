@@ -137,7 +137,7 @@ func saveScore():
 	
 	# Ensure only 5 Highscores are stored
 	if (highScores.size() > 5):
-		highScores.pop_front()
+		highScores.pop_back()
 	
 	# Save highscore list to file
 	file = FileAccess.open("user://save_game.txt", FileAccess.WRITE)

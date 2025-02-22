@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://do0jofee2u6m0"]
+[gd_scene load_steps=5 format=3 uid="uid://do0jofee2u6m0"]
 
 [ext_resource type="Theme" uid="uid://d2cxgswnxv5r8" path="res://theme/menuTheme.tres" id="1_s8giw"]
 [ext_resource type="Script" path="res://menus/endGame/end_game.gd" id="2_u1hl0"]
 [ext_resource type="PackedScene" uid="uid://1nws1ni3xgmy" path="res://menus/settings/settings.tscn" id="3_1tfo8"]
+[ext_resource type="PackedScene" uid="uid://cpbfu3n5hpptb" path="res://menus/highScores/high_scores.tscn" id="4_hia3m"]
 
 [node name="EndGame" type="Control"]
 layout_mode = 3
@@ -55,6 +56,10 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Retry"
 
+[node name="Highscores" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Highscores"
+
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Settings"
@@ -67,12 +72,18 @@ text = "Main Menu"
 visible = false
 layout_mode = 1
 
+[node name="HighScores" parent="." instance=ExtResource("4_hia3m")]
+visible = false
+layout_mode = 1
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/Highscores" to="." method="_on_highscores_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="closedSettings" from="Settings" to="." method="_on_settings_closed_settings"]
+[connection signal="closeHighscore" from="HighScores" to="." method="_on_high_scores_close_highscore"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
