@@ -97,7 +97,7 @@ func restartGame():
 	injured_skydiver.hide()
 	splatter.hide()
 	landed = false
-	position = Vector2(100,100)
+	position = Vector2(320,100)
 
 func selectPlayerState(state: PlayerState):
 	if falling_skydiver == null:
