@@ -35,6 +35,7 @@ signal spawn
 signal spawnGround
 signal landOnGround
 signal reset
+signal introAnimation
 # The below are the percentage values for each damage zone
 # Splatter		Red >= -17.5			20%
 # Injured		Yellow >= -72.4			80%

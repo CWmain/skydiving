@@ -22,6 +22,8 @@ func _ready():
 	
 
 func _process(_delta):
+	if GM.inGame:
+		game_info.show()
 	if Input.is_action_just_pressed("pause") and GM.inGame:
 		pause_screen.show()
 		get_tree().paused = true
@@ -58,6 +60,6 @@ func _on_button_pressed():
 
 
 func _on_main_menu_start_game():
-	GM.inGame = true
+	GM.introAnimation.emit()
 	main_menu.hide()
-	game_info.show()
+	

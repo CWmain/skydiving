@@ -5,8 +5,17 @@ class_name skydiver
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+enum PlayerState{
+	Hidden,
+	Falling,
+	Safe,
+	Injured,
+	Splatter
+}
+
 @export var ascendSpeed: int = 100
 @export var GM_HOLDER: SubViewportContainer
+@export var playerState: PlayerState = PlayerState.Hidden: set = selectPlayerState
 
 ## Skydiver graphics
 @onready var falling_skydiver = $FallingSkydiver
@@ -89,4 +98,35 @@ func restartGame():
 	splatter.hide()
 	landed = false
 	position = Vector2(100,100)
-	
+
+func selectPlayerState(state: PlayerState):
+	if falling_skydiver == null:
+		playerState = state
+		return
+	match state:
+		PlayerState.Hidden:
+			falling_skydiver.hide()
+			safe_skydiver.hide()
+			injured_skydiver.hide()
+			splatter.hide()
+		PlayerState.Falling:
+			falling_skydiver.show()
+			safe_skydiver.hide()
+			injured_skydiver.hide()
+			splatter.hide()
+		PlayerState.Safe:
+			safe_skydiver.show()
+			falling_skydiver.hide()
+			injured_skydiver.hide()
+			splatter.hide()
+		PlayerState.Injured:
+			injured_skydiver.show()
+			falling_skydiver.hide()
+			safe_skydiver.hide()
+			splatter.hide()
+		PlayerState.Splatter:
+			splatter.show()
+			falling_skydiver.hide()
+			safe_skydiver.hide()
+			injured_skydiver.hide()
+	playerState = state

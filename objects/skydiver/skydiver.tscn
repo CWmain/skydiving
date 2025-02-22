@@ -25,6 +25,7 @@ position = Vector2(0, 8)
 texture = ExtResource("3_wfe8x")
 
 [node name="FallingSkydiver" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 texture = ExtResource("4_q6s2d")
 

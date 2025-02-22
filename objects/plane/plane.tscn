@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://di0f7e5sjp1g8"]
+
+[ext_resource type="Texture2D" uid="uid://deub3j8t4xnj" path="res://objects/plane/planeSide.png" id="1_3hb6v"]
+[ext_resource type="Script" path="res://objects/plane/plane.gd" id="1_m2mj1"]
+[ext_resource type="Texture2D" uid="uid://dlidshp6qv3tf" path="res://objects/plane/planeDoor.png" id="2_d7225"]
+
+[node name="Plane" type="Node2D"]
+script = ExtResource("1_m2mj1")
+
+[node name="PlaneSide" type="Sprite2D" parent="."]
+texture = ExtResource("1_3hb6v")
+
+[node name="PlaneDoor" type="Sprite2D" parent="."]
+texture = ExtResource("2_d7225")
