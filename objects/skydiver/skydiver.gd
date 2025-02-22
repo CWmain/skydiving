@@ -54,6 +54,13 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	var upDown = Input.get_axis("up", "down")
 	var leftRight = Input.get_axis("left", "right")
+	if leftRight > 0:
+		falling_skydiver.flip_h = false
+		injured_skydiver.flip_h = false
+	if leftRight < 0:
+		falling_skydiver.flip_h = true
+		injured_skydiver.flip_h = true
+		
 	position += Vector2(leftRight, upDown).normalized()*SPEED*delta
 	
 	if position.y > 100:

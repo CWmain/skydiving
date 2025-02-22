@@ -94,7 +94,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
 		oldHeight = 1000
-		current_speed = 50
+		current_speed = 200
 # Reset all key varaibles and inform spawner to clear all children, inform skydiver to reset to default
 func restartGame():
 	current_height = startingHeight
