@@ -6,6 +6,8 @@ extends Node2D
 @onready var cloud_explosion = $CloudExplosion
 @onready var cloud = $Cloud
 
+@onready var cloud_puff = $CloudPuff
+
 func _ready():
 	GM = get_parent().GM
 	assert(GM != null, "No parent for bird")
@@ -27,6 +29,7 @@ func _on_player_detected(area):
 
 func explodeCloud():
 	cloud.hide()
+	cloud_puff.play()
 	cloud_explosion.emitting = true
 
 

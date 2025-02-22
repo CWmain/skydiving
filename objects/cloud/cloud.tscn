@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1ojigoh4jwsl"]
+[gd_scene load_steps=6 format=3 uid="uid://1ojigoh4jwsl"]
 
 [ext_resource type="Texture2D" uid="uid://cxu20u3vgmppl" path="res://objects/cloud/cloud.png" id="1_fos3r"]
 [ext_resource type="Script" path="res://objects/cloud/cloud.gd" id="1_rmy66"]
 [ext_resource type="PackedScene" uid="uid://conqlowcn7dju" path="res://particles/cloud_explosion.tscn" id="3_eerf7"]
+[ext_resource type="AudioStream" uid="uid://d0v0sb0acv4r6" path="res://sounds/cloudExplosion.mp3" id="4_sps1j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30wq2"]
 radius = 20.0
@@ -23,6 +24,10 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_30wq2")
 
 [node name="CloudExplosion" parent="." instance=ExtResource("3_eerf7")]
+
+[node name="CloudPuff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sps1j")
+bus = &"sfx"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_player_detected"]
 [connection signal="finished" from="CloudExplosion" to="." method="_on_cloud_explosion_finished"]

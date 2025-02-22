@@ -5,10 +5,14 @@ extends Node2D
 
 @onready var animated_bird_sprite = $AnimatedBirdSprite
 @onready var feather_explosion = $FeatherExplosion
+@onready var player_detectable = $PlayerDetectable
 
 var GM: gameManager
 
 var skydiverSpeed: int = 0
+@onready var bird_sqwuak = $BirdSqwuak
+
+var canMove: bool = true
 
 func _ready():
 	GM = get_parent().GM
@@ -22,6 +26,8 @@ func _ready():
 	skydiverSpeed = GM.current_speed
 
 func _physics_process(delta):
+	if !canMove:
+		return
 	position += Vector2(FLY_SPEED*delta, -GM.current_speed*delta)
 	
 	# Gone off the top of the screen, so we free it
@@ -31,16 +37,24 @@ func _physics_process(delta):
 
 
 func _on_player_detected(area):
+	if !canMove:
+		return
 	# Reduce the fall speed
 	GM.current_speed -= FALL_SPEED_REDUCTION
-	print("Cur Speed: %s" % str(GM.current_speed))
+	canMove = false
 	explodeBird()
 
 func explodeBird():
 	animated_bird_sprite.hide()
+	bird_sqwuak.play()
 	feather_explosion.emitting = true
 
 
 func _on_feather_explosion_finished():
+	print("particles done")
+	#queue_free()
+
+
+func _on_bird_sqwuak_finished():
 	get_parent().spawnCount -= 1
 	queue_free()

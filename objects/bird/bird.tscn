@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://uydu54p3rh1e"]
+[gd_scene load_steps=9 format=3 uid="uid://uydu54p3rh1e"]
 
 [ext_resource type="Texture2D" uid="uid://c48vo1ofjsdvu" path="res://objects/bird/animated_bird.png" id="1_2loqj"]
 [ext_resource type="Script" path="res://objects/bird/bird.gd" id="1_sjs2c"]
 [ext_resource type="PackedScene" uid="uid://5hyv0faqwnxu" path="res://particles/feather_explosion.tscn" id="3_1wqlt"]
+[ext_resource type="AudioStream" uid="uid://c41ie7wuvfct2" path="res://sounds/birdExplosion.mp3" id="4_ehyni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys0lp"]
 atlas = ExtResource("1_2loqj")
@@ -45,5 +46,10 @@ shape = SubResource("CircleShape2D_5xw7a")
 
 [node name="FeatherExplosion" parent="." instance=ExtResource("3_1wqlt")]
 
+[node name="BirdSqwuak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ehyni")
+bus = &"sfx"
+
 [connection signal="area_entered" from="PlayerDetectable" to="." method="_on_player_detected"]
 [connection signal="finished" from="FeatherExplosion" to="." method="_on_feather_explosion_finished"]
+[connection signal="finished" from="BirdSqwuak" to="." method="_on_bird_sqwuak_finished"]
