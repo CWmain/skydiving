@@ -37,6 +37,7 @@ func _physics_process(delta):
 
 
 func _on_player_detected(area):
+	# This prevents double detects
 	if !canMove:
 		return
 	# Reduce the fall speed
