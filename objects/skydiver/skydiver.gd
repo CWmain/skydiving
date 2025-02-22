@@ -55,8 +55,8 @@ func _physics_process(delta):
 			print("Safe")
 			safe_skydiver.show()
 		
+		GM.saveScore()
 		GM.endScreen.emit()	
-		print("wait, then end game displaying speed as a score")
 	
 	# Prevent all movement when screen locked for the end of the game
 	if GM.lockScreen:

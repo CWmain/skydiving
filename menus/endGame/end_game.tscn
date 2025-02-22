@@ -67,7 +67,12 @@ text = "Main Menu"
 visible = false
 layout_mode = 1
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="pressed" from="VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="closedSettings" from="Settings" to="." method="_on_settings_closed_settings"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,6 +4,8 @@ signal startGame
 
 @onready var v_box_container = $VBoxContainer
 @onready var settings = $Settings
+@onready var high_scores = $HighScores
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -24,4 +26,14 @@ func _on_settings_pressed():
 
 func _on_settings_closed_settings():
 	settings.hide()
+	v_box_container.show()
+
+
+func _on_high_scores_pressed():
+	v_box_container.hide()
+	high_scores.showScores()
+
+
+func _on_high_scores_close_highscore():
+	high_scores.hide()
 	v_box_container.show()

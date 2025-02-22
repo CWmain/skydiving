@@ -9,11 +9,13 @@ var GM: gameManager
 @onready var status = $VBoxContainer/Status
 @onready var score = $VBoxContainer/Score
 
+@onready var timer = $Timer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(GM_HOLDER != null)
 	GM = GM_HOLDER.GM
-	GM.endScreen.connect(_showEndScreen)
+	GM.endScreen.connect(_startEndScreenTimer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +30,12 @@ func _on_retry_pressed():
 
 func _on_main_menu_pressed():
 	get_tree().reload_current_scene()
+
+func _startEndScreenTimer():
+	timer.start()
+
+func _on_timer_timeout():
+	_showEndScreen()
 
 func _showEndScreen():
 	show()
@@ -52,3 +60,6 @@ func _on_settings_closed_settings():
 func _on_settings_pressed():
 	v_box_container.hide()
 	settings.show()
+
+
+

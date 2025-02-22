@@ -12,6 +12,8 @@ class_name gameManager
 
 @export var groundHeight: int = 32
 
+@export var saveFileString: String = "user://save_game.txt"
+
 # Stops other objects from moving up and makes the skydiver move down
 var lockScreen: bool = false
 var randomGen: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -96,7 +98,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("NearGroundDebug"):
 		current_height = 1000
 		oldHeight = 1000
-		current_speed = 200
+		#current_speed = 200
 # Reset all key varaibles and inform spawner to clear all children, inform skydiver to reset to default
 func restartGame():
 	inGame = true
@@ -111,8 +113,34 @@ func restartGame():
 	
 	reset.emit()
 	
-
 func spawnRandom():
 	spawn.emit()
+
+func saveScore():
+	var file = FileAccess.open("user://save_game.txt", FileAccess.READ)
+	var stringFile: String
+	if (FileAccess.file_exists(saveFileString)):
+		file = FileAccess.open("user://save_game.txt", FileAccess.READ)
+		stringFile = file.get_as_text()
+		file.close()
 	
+	# Get the highscore list
+	var highScores: Array[int]
+	if (stringFile.length() == 0):
+		highScores = [lastSpeed]
+	else:
+		highScores = str_to_var(stringFile)
+		highScores.append(lastSpeed)
+	
+	# Re-sort highscore list
+	highScores.sort()
+	
+	# Ensure only 5 Highscores are stored
+	if (highScores.size() > 5):
+		highScores.pop_front()
+	
+	# Save highscore list to file
+	file = FileAccess.open("user://save_game.txt", FileAccess.WRITE)
+	file.store_line(var_to_str(highScores))
+	file.close()
 	
