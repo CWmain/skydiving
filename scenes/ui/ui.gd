@@ -40,6 +40,9 @@ func _on_resize():
 		pause_screen.scale.x = max(1, pause_screen.scale.x-1)
 		pause_screen.scale.y = max(1, pause_screen.scale.y-1)
 		
+		main_menu.scale.x = max(1, main_menu.scale.x-1)
+		main_menu.scale.y = max(1, main_menu.scale.y-1)
+		
 		
 	# Increase world size if an integer increase fits the current screen size
 	if (worldSize + baseSize <= windowSize):
