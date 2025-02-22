@@ -9,6 +9,7 @@ extends SubViewportContainer
 
 @onready var pause_screen = $SubViewport/PauseMenu
 @onready var main_menu = $SubViewport/MainMenu
+@onready var end_game = $SubViewport/EndGame
 
 
 const baseSize: Vector2 = Vector2(640, 360)
@@ -44,6 +45,9 @@ func _on_resize():
 		
 		main_menu.scale.x = max(1, main_menu.scale.x-1)
 		main_menu.scale.y = max(1, main_menu.scale.y-1)
+		
+		end_game.scale.x = max(1, end_game.scale.x-1)
+		end_game.scale.y = max(1, end_game.scale.y-1)
 		
 		
 	# Increase world size if an integer increase fits the current screen size

@@ -3,9 +3,11 @@ extends Control
 @export var GM_HOLDER: SubViewportContainer
 var GM: gameManager
 
-@onready var v_box_container = $VBoxContainer
-@onready var score = $VBoxContainer/Score
 @onready var settings = $Settings
+
+@onready var v_box_container = $VBoxContainer
+@onready var status = $VBoxContainer/Status
+@onready var score = $VBoxContainer/Score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +32,15 @@ func _on_main_menu_pressed():
 func _showEndScreen():
 	show()
 	GM.inGame = false
+	var percentSpeed = (float(GM.lastSpeed-GM.minSpeed)/float(GM.startingSpeed))
+	if (percentSpeed > GM.percentSplatter):
+		status.text = "You Died"
+
+	elif (percentSpeed > GM.percentInjured):
+		status.text = "You were Injured"
+
+	else:
+		status.text = "You survived!"
 	score.text = str(GM.lastSpeed)
 
 
