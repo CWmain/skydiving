@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqb8bwdbnr5gw"]
+[gd_scene load_steps=7 format=3 uid="uid://cqb8bwdbnr5gw"]
 
 [ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_wtjq8"]
 [ext_resource type="PackedScene" uid="uid://dc4gsqtp8e0b2" path="res://objects/speedgauge/speed_gauge.tscn" id="2_vcp77"]
 [ext_resource type="PackedScene" uid="uid://c0kofshqepq7i" path="res://objects/altometer/altometer.tscn" id="3_142au"]
 [ext_resource type="PackedScene" uid="uid://pyrf76cgs0fg" path="res://menus/pauseMenu/pause_menu.tscn" id="4_hhp71"]
 [ext_resource type="PackedScene" uid="uid://d2xg2ecne6lvb" path="res://menus/main_menu/main_menu.tscn" id="5_m1p3v"]
+[ext_resource type="PackedScene" uid="uid://do0jofee2u6m0" path="res://menus/endGame/end_game.tscn" id="6_w5wlw"]
 
 [node name="UI" type="SubViewportContainer"]
 process_mode = 3
@@ -44,5 +45,9 @@ visible = false
 GM_HOLDER = NodePath("../..")
 
 [node name="MainMenu" parent="SubViewport" instance=ExtResource("5_m1p3v")]
+
+[node name="EndGame" parent="SubViewport" node_paths=PackedStringArray("GM_HOLDER") instance=ExtResource("6_w5wlw")]
+visible = false
+GM_HOLDER = NodePath("../..")
 
 [connection signal="startGame" from="SubViewport/MainMenu" to="." method="_on_main_menu_start_game"]
