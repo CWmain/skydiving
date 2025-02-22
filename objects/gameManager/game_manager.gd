@@ -13,6 +13,7 @@ class_name gameManager
 @export var groundHeight: int = 32
 
 @export var saveFileString: String = "user://save_game.txt"
+@onready var background_music = $BackgroundMusic
 
 # Stops other objects from moving up and makes the skydiver move down
 var lockScreen: bool = false
@@ -39,6 +40,7 @@ signal landOnGround
 signal reset
 signal introAnimation
 signal endScreen
+
 # The below are the percentage values for each damage zone
 # Splatter		Red >= -17.5			20%
 # Injured		Yellow >= -72.4			80%
@@ -61,7 +63,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if !inGame:
+		background_music.stop()
 		return
+	if !background_music.playing:
+		background_music.play()	
+		
 	if !spawnedGround and current_height <= 360:
 		spawnGround.emit()
 	

@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvswf6ii7shxx"]
+[gd_scene load_steps=3 format=3 uid="uid://dvswf6ii7shxx"]
 
 [ext_resource type="Script" path="res://objects/gameManager/game_manager.gd" id="1_45saf"]
+[ext_resource type="AudioStream" uid="uid://bsubj34uwr3sh" path="res://sounds/gamePlayMusic.mp3" id="2_xo1td"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_45saf")
 startingSpeed = 3000
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xo1td")
+volume_db = -5.0
+bus = &"music"
