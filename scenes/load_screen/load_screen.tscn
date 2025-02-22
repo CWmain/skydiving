@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://2m757lktr774"]
+
+[ext_resource type="PackedScene" uid="uid://conqlowcn7dju" path="res://particles/cloud_explosion.tscn" id="1_2rmms"]
+[ext_resource type="Script" path="res://scenes/load_screen/load_screen.gd" id="1_scr1x"]
+[ext_resource type="PackedScene" uid="uid://5hyv0faqwnxu" path="res://particles/feather_explosion.tscn" id="2_pwjds"]
+
+[node name="LoadScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scr1x")
+sceneName = "res://scenes/base_viewport/base_viewport.tscn"
+
+[node name="CloudExplosion" parent="." instance=ExtResource("1_2rmms")]
+position = Vector2(628, 244)
+
+[node name="FeatherExplosion" parent="." instance=ExtResource("2_pwjds")]
+position = Vector2(628, 244)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.529412, 0.807843, 0.921569, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)

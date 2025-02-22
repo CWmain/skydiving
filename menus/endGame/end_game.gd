@@ -39,7 +39,7 @@ func _on_timer_timeout():
 func _showEndScreen():
 	show()
 	GM.inGame = false
-	var percentSpeed = (float(GM.lastSpeed-GM.minSpeed)/float(GM.startingSpeed))
+	var percentSpeed = (float(GM.lastSpeed-GM.minSpeed)/float(GM.startingSpeed-GM.minSpeed))
 	if (percentSpeed > GM.percentSplatter):
 		status.text = "You Died"
 

@@ -29,4 +29,4 @@ func _process(delta):
 		pointer.rotation = calculateRotation(GM.current_speed)
 
 func calculateRotation(calculateFor: float) -> float:
-	return (1 - float(calculateFor-GM.minSpeed)/float(GM.startingSpeed)) * maxRotation
+	return (1 - float(calculateFor-GM.minSpeed)/float(GM.startingSpeed-GM.minSpeed)) * maxRotation
