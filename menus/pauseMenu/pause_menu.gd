@@ -25,6 +25,7 @@ func _on_retry_pressed():
 
 func _on_settings_pressed():
 	v_box_container.hide()
+	settings_menu.refreshSliderValues()
 	settings_menu.show()
 	
 
