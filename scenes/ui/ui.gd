@@ -8,18 +8,21 @@ extends SubViewportContainer
 @onready var game_info = $SubViewport/gameInfo
 
 @onready var pause_screen = $SubViewport/PauseMenu
+@onready var main_menu = $SubViewport/MainMenu
 
 
 const baseSize: Vector2 = Vector2(640, 360)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(GM != null, "GM not assigned to UI viewport")
 	get_tree().get_root().size_changed.connect(_on_resize)
 	_on_resize()
+	
 
 func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and GM.inGame:
 		pause_screen.show()
 		get_tree().paused = true
 
@@ -49,3 +52,9 @@ func _on_resize():
 
 func _on_button_pressed():
 	print("This bytton works")
+
+
+func _on_main_menu_start_game():
+	GM.inGame = true
+	main_menu.hide()
+	game_info.show()

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2xg2ecne6lvb"]
+
+[ext_resource type="Theme" uid="uid://d2cxgswnxv5r8" path="res://theme/menuTheme.tres" id="1_lp4kr"]
+[ext_resource type="Script" path="res://menus/main_menu/main_menu.gd" id="2_u55vp"]
+[ext_resource type="PackedScene" uid="uid://1nws1ni3xgmy" path="res://menus/settings/settings.tscn" id="3_y0x1l"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+theme = ExtResource("1_lp4kr")
+script = ExtResource("2_u55vp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -26.5
+offset_right = 40.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Jump"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" parent="." instance=ExtResource("3_y0x1l")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="closedSettings" from="Settings" to="." method="_on_settings_closed_settings"]

@@ -44,6 +44,9 @@ var percentSplatter: float = 0.8
 var percentInjured: float = 0.2
 var percentSafe: float = 0.0
 
+## Indicates if the user has started the game
+var inGame: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_speed = startingSpeed
@@ -53,6 +56,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if !inGame:
+		return
 	if !spawnedGround and current_height <= 360:
 		spawnGround.emit()
 	
