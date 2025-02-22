@@ -34,7 +34,7 @@ var lastSpeed: int = 0
 signal spawn
 signal spawnGround
 signal landOnGround
-
+signal reset
 # The below are the percentage values for each damage zone
 # Splatter		Red >= -17.5			20%
 # Injured		Yellow >= -72.4			80%
@@ -90,7 +90,20 @@ func _physics_process(delta):
 		current_height = 1000
 		oldHeight = 1000
 		current_speed = 50
+# Reset all key varaibles and inform spawner to clear all children, inform skydiver to reset to default
+func restartGame():
+	current_height = startingHeight
+	oldHeight = current_height
+	current_speed = startingSpeed
+	spawnTimer = 0
+	addSpeedTimer = 0
 	
+	lockScreen = false
+	spawnedGround = false
+	
+	reset.emit()
+	
+
 func spawnRandom():
 	spawn.emit()
 	

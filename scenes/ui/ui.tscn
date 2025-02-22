@@ -37,5 +37,6 @@ GM_Holder = NodePath("../../..")
 layout_mode = 2
 GM_Holder = NodePath("../../..")
 
-[node name="PauseMenu" parent="SubViewport" instance=ExtResource("4_hhp71")]
+[node name="PauseMenu" parent="SubViewport" node_paths=PackedStringArray("GM_HOLDER") instance=ExtResource("4_hhp71")]
 visible = false
+GM_HOLDER = NodePath("../..")

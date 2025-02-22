@@ -22,6 +22,7 @@ func _ready():
 	GM = GM_HOLDER.GM
 	assert(GM != null)
 	GM.landOnGround.connect(_landing)
+	GM.reset.connect(restartGame)
 
 func _physics_process(delta):
 	if GM.lockScreen and position.y < 360-GM.groundHeight:
@@ -73,3 +74,12 @@ func limitPlayerMovement():
 func _landing():	
 	# Adjust the current height with the characters height from floor
 	GM.current_height -= position.y
+
+func restartGame():
+	falling_skydiver.show()
+	safe_skydiver.hide()
+	injured_skydiver.hide()
+	splatter.hide()
+	landed = false
+	position = Vector2(100,100)
+	

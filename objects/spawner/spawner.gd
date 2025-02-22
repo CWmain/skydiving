@@ -15,6 +15,7 @@ func _ready():
 	assert(GM != null)
 	GM.spawn.connect(spawnBird)
 	GM.spawnGround.connect(spawnGround)
+	GM.reset.connect(restartGame)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,3 +38,8 @@ func spawnBird():
 func spawnGround():
 	var newGround = GROUND.instantiate()
 	add_child(newGround)
+	
+func restartGame():
+	# Free all children
+	for child in get_children():
+		child.queue_free()
