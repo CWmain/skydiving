@@ -23,6 +23,10 @@ enum PlayerState{
 @onready var injured_skydiver = $InjuredSkydiver
 @onready var splatter = $Splatter
 
+@onready var bone_crack_sound = $boneCrack
+@onready var splatter_sound = $splatter
+
+
 var landed: bool = false
 var GM: gameManager
 var fallSpeed = 0
@@ -47,9 +51,11 @@ func _physics_process(delta):
 		falling_skydiver.hide()
 		if (percentSpeed > GM.percentSplatter):
 			splatter.show()
+			splatter_sound.play()
 			print("Splatter")
 		elif (percentSpeed > GM.percentInjured):
 			injured_skydiver.show()
+			bone_crack_sound.play()
 			print("Injured")
 		else:
 			print("Safe")

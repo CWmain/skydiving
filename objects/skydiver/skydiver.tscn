@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq7r54bos83hc"]
+[gd_scene load_steps=9 format=3 uid="uid://dq7r54bos83hc"]
 
 [ext_resource type="Script" path="res://objects/skydiver/skydiver.gd" id="1_veyx1"]
 [ext_resource type="Texture2D" uid="uid://4lj6188l1x05" path="res://objects/skydiver/Splatter.png" id="3_wfe8x"]
 [ext_resource type="Texture2D" uid="uid://imjix18xxf6t" path="res://objects/skydiver/fallingSkydiver.png" id="4_q6s2d"]
 [ext_resource type="Texture2D" uid="uid://i6vo2od7icu1" path="res://objects/skydiver/InjuredSkydiver.png" id="5_22oiu"]
 [ext_resource type="Texture2D" uid="uid://5s4nvdqyxw1k" path="res://objects/skydiver/SafeSkydiver.png" id="6_2jq1u"]
+[ext_resource type="AudioStream" uid="uid://nk1vbwmaao6e" path="res://sounds/boneCrack.mp3" id="6_uv4f2"]
+[ext_resource type="AudioStream" uid="uid://teu75fevg688" path="res://sounds/playerSplatt.mp3" id="7_jryig"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aceuh"]
 radius = 21.0
@@ -38,3 +40,11 @@ texture = ExtResource("5_22oiu")
 visible = false
 position = Vector2(0, -16)
 texture = ExtResource("6_2jq1u")
+
+[node name="boneCrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_uv4f2")
+bus = &"sfx"
+
+[node name="splatter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jryig")
+bus = &"sfx"
