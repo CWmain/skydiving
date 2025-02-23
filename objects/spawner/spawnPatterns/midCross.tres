@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SpawnPattern" load_steps=8 format=3 uid="uid://d14osjlppwch6"]
+
+[ext_resource type="Script" path="res://objects/spawner/spawnPatterns/spawnPattern.gd" id="1_giu5n"]
+[ext_resource type="Script" path="res://objects/spawner/spawnPatterns/spawnPoints.gd" id="2_d8l18"]
+
+[sub_resource type="Resource" id="Resource_sjhhg"]
+script = ExtResource("2_d8l18")
+list = Array[Vector2]([Vector2(256, 380), Vector2(384, 380)])
+
+[sub_resource type="Resource" id="Resource_phygu"]
+script = ExtResource("2_d8l18")
+list = Array[Vector2]([Vector2(256, 380), Vector2(384, 380)])
+
+[sub_resource type="Resource" id="Resource_t5lv6"]
+script = ExtResource("2_d8l18")
+list = Array[Vector2]([Vector2(256, 380), Vector2(384, 380)])
+
+[sub_resource type="Resource" id="Resource_kqwqq"]
+script = ExtResource("2_d8l18")
+list = Array[Vector2]([Vector2(256, 380), Vector2(384, 380)])
+
+[sub_resource type="Resource" id="Resource_7ugjb"]
+script = ExtResource("2_d8l18")
+list = Array[Vector2]([Vector2(256, 380), Vector2(384, 380)])
+
+[resource]
+script = ExtResource("1_giu5n")
+toSpawn = "BIRD"
+spawnDistance = 128
+spawnLocations = Array[ExtResource("2_d8l18")]([SubResource("Resource_sjhhg"), SubResource("Resource_phygu"), SubResource("Resource_t5lv6"), SubResource("Resource_kqwqq"), SubResource("Resource_7ugjb")])

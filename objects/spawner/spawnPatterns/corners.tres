@@ -22,5 +22,5 @@ list = Array[Vector2]([Vector2(10, 370), Vector2(630, 370)])
 [resource]
 script = ExtResource("1_phiyv")
 toSpawn = "BIRD"
-spawnDistance = 64
+spawnDistance = 256
 spawnLocations = Array[ExtResource("2_0jeu6")]([SubResource("Resource_e50p7"), SubResource("Resource_cgd5u"), SubResource("Resource_i1s7x"), SubResource("Resource_3y7bv")])

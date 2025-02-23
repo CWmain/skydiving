@@ -28,6 +28,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
+	# Stop spawning birds when below 400
+	if GM.current_height < 400:
+		return
+	
 	var heightDiff = oldDist - GM.current_height
 	oldDist = GM.current_height
 	birdSpawnTimer += heightDiff
@@ -57,8 +61,9 @@ func spawnBird():
 	#if spawnCount > spawnLimit:
 	#	return
 	var toSpawn: float = GM.randomGen.randf()
-	if toSpawn > 0.5:
+	if toSpawn > 1:
 		var newBird = BIRD.instantiate()
+		newBird.position = Vector2(GM.randomGen.randf()*640, 370)
 		add_child(newBird)
 	elif GM.current_height > 500:	
 		var newCloud = CLOUD.instantiate()
@@ -70,6 +75,7 @@ func spawnGround():
 	add_child(newGround)
 	
 func restartGame():
+	oldDist = GM.startingHeight
 	# Free all children
 	for child in get_children():
 		child.queue_free()
