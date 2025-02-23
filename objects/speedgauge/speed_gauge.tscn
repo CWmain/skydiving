@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc4gsqtp8e0b2"]
+[gd_scene load_steps=7 format=3 uid="uid://dc4gsqtp8e0b2"]
 
 [ext_resource type="Texture2D" uid="uid://26va0roj0im6" path="res://objects/speedgauge/gauge.png" id="1_e0uba"]
 [ext_resource type="Script" path="res://objects/speedgauge/speed_gauge.gd" id="1_pl4lm"]
 [ext_resource type="Shader" path="res://objects/speedgauge/speed_gauge.gdshader" id="2_mpdft"]
 [ext_resource type="Texture2D" uid="uid://bemnceey7gr1g" path="res://objects/speedgauge/pointer.png" id="2_si187"]
+[ext_resource type="Texture2D" uid="uid://bhill3i4y2da5" path="res://objects/speedgauge/skull.png" id="4_3nnbq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h56po"]
 shader = ExtResource("2_mpdft")
@@ -20,6 +21,10 @@ script = ExtResource("1_pl4lm")
 material = SubResource("ShaderMaterial_h56po")
 position = Vector2(-21, 15)
 texture = ExtResource("1_e0uba")
+
+[node name="Skull" type="Sprite2D" parent="."]
+position = Vector2(-5, 9)
+texture = ExtResource("4_3nnbq")
 
 [node name="Pointer" type="Sprite2D" parent="."]
 position = Vector2(-10, 26)
