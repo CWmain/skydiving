@@ -25,9 +25,13 @@ func _ready():
 func _process(_delta):
 	if GM.inGame:
 		game_info.show()
-	if Input.is_action_just_pressed("pause") and GM.inGame:
+		
+	if Input.is_action_just_pressed("pause") and GM.inGame and !pause_screen.visible:
 		pause_screen.show()
 		get_tree().paused = true
+	elif Input.is_action_just_pressed("pause") and GM.inGame and pause_screen.visible:
+		get_tree().paused = false
+		pause_screen.hide()
 
 func _on_resize():
 	var windowSize: Vector2 = DisplayServer.window_get_size()

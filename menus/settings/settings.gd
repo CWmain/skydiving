@@ -10,6 +10,10 @@ signal closedSettings
 func _ready():
 	refreshSliderValues()
 
+func _process(_delta):
+	if Input.is_action_just_pressed("pause") and visible:
+		_on_back_pressed()
+
 func _on_back_pressed():
 	closedSettings.emit()
 
