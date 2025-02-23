@@ -40,7 +40,7 @@ func _physics_process(_delta):
 	if curSpawnPattern == null or curSpawnPattern.spawnLocations.size() == curSpawnPatternIndex:
 		# Multiple float by birdSpawns.size() to get the selection index
 		var selection = int(GM.randomGen.randf() * birdSpawns.size()) % (birdSpawns.size())
-		print(selection)
+
 		curSpawnPattern = birdSpawns[selection]
 		curSpawnPatternIndex = 0
 

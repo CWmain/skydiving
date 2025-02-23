@@ -19,4 +19,3 @@ func _playIntro():
 
 func _on_animation_player_animation_finished(anim_name):
 	GM.inGame = true
-	print("Finished intro")

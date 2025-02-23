@@ -52,13 +52,12 @@ func _physics_process(delta):
 		if (percentSpeed > GM.percentSplatter):
 			splatter.show()
 			splatter_sound.play()
-			print("Splatter")
+
 		elif (percentSpeed > GM.percentInjured):
 			injured_skydiver.show()
 			bone_crack_sound.play()
-			print("Injured")
+
 		else:
-			print("Safe")
 			safe_skydiver.show()
 		
 		GM.saveScore()

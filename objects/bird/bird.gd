@@ -52,7 +52,7 @@ func explodeBird():
 
 
 func _on_feather_explosion_finished():
-	print("particles done")
+	pass
 	#queue_free()
 
 

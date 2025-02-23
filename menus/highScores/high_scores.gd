@@ -25,11 +25,9 @@ func loadScores():
 	
 	# Re-sort highscore list
 	highScores.sort()
-	print(highScores)
-	# Generate labels and append to list
 
+	# Generate labels and append to list
 	for i in range(0,5):
-		print("here")
 		var item = Label.new()
 		item.text = "%s) " % (i+1)
 		if (i < highScores.size()):

@@ -60,7 +60,6 @@ func _on_resize():
 		# Increase scale of all children
 		for child in sub_viewport.get_children():
 			child.scale += Vector2(1,1)
-	print(sub_viewport.size)
 
 
 func _on_button_pressed():
