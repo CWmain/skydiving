@@ -17,9 +17,9 @@ var canMove: bool = true
 func _ready():
 	GM = get_parent().GM
 	assert(GM != null, "No parent for bird")
-	position = Vector2(GM.randomGen.randi_range(-20,660), 400)
+	
 	animated_bird_sprite.play("default")
-	if (GM.randomGen.randf() > 0.5):
+	if (position.x > 320):
 		FLY_SPEED *= -1
 		animated_bird_sprite.flip_h = true
 

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="SpawnPattern" load_steps=7 format=3 uid="uid://btt87ijn470b8"]
+
+[ext_resource type="Script" path="res://objects/spawner/spawnPatterns/spawnPattern.gd" id="1_r5ti3"]
+[ext_resource type="Script" path="res://objects/spawner/spawnPatterns/spawnPoints.gd" id="2_iuwuo"]
+
+[sub_resource type="Resource" id="Resource_lup3l"]
+script = ExtResource("2_iuwuo")
+list = Array[Vector2]([Vector2(320, 400)])
+
+[sub_resource type="Resource" id="Resource_vqe1e"]
+script = ExtResource("2_iuwuo")
+list = Array[Vector2]([Vector2(320, 400)])
+
+[sub_resource type="Resource" id="Resource_hu3rc"]
+script = ExtResource("2_iuwuo")
+list = Array[Vector2]([Vector2(320, 400)])
+
+[sub_resource type="Resource" id="Resource_cgo8n"]
+script = ExtResource("2_iuwuo")
+list = Array[Vector2]([Vector2(320, 400)])
+
+[resource]
+script = ExtResource("1_r5ti3")
+toSpawn = "BIRD"
+spawnDistance = 128
+spawnLocations = Array[ExtResource("2_iuwuo")]([SubResource("Resource_lup3l"), SubResource("Resource_vqe1e"), SubResource("Resource_hu3rc"), SubResource("Resource_cgo8n")])

@@ -1,6 +1,10 @@
 extends Node
 
 @export var spawnLimit: int = 10
+@export var birdSpawns: Array[SpawnPattern]
+
+var curSpawnPattern: SpawnPattern = null
+var curSpawnPatternIndex: int = 0
 
 const BIRD = preload("res://objects/bird/bird.tscn")
 const CLOUD = preload("res://objects/cloud/cloud.tscn")
@@ -9,6 +13,9 @@ const GROUND = preload("res://objects/ground/ground.tscn")
 var spawnCount: int = 0
 var GM: gameManager
 
+var oldDist: float = 0
+var birdSpawnTimer: float = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM = get_parent().get_parent().GM
@@ -16,11 +23,34 @@ func _ready():
 	GM.spawn.connect(spawnBird)
 	GM.spawnGround.connect(spawnGround)
 	GM.reset.connect(restartGame)
+	oldDist = GM.startingHeight
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(_delta):
+	var heightDiff = oldDist - GM.current_height
+	oldDist = GM.current_height
+	birdSpawnTimer += heightDiff
+	
+	# Ensures a pattern exists
+	if curSpawnPattern == null or curSpawnPattern.spawnLocations.size() == curSpawnPatternIndex:
+		# Multiple float by birdSpawns.size() to get the selection index
+		var selection = int(GM.randomGen.randf() * birdSpawns.size()) % (birdSpawns.size())
+		print(selection)
+		curSpawnPattern = birdSpawns[selection]
+		curSpawnPatternIndex = 0
+
+	if birdSpawnTimer >= curSpawnPattern.spawnDistance:
+
+		birdSpawnTimer -= curSpawnPattern.spawnDistance
+		if curSpawnPattern.toSpawn == "BIRD":
+			for newXY in curSpawnPattern.spawnLocations[curSpawnPatternIndex].list:
+				var newBird = BIRD.instantiate()
+				newBird.position = newXY
+				add_child(newBird)
+		curSpawnPatternIndex += 1
+			
+		
 
 func spawnBird():
 	# Limit spawns to spawnLimit

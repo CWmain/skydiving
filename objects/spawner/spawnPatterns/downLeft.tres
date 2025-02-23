@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SpawnPattern" load_steps=8 format=3 uid="uid://c7w2birsuyoji"]
+
+[ext_resource type="Script" path="res://objects/spawner/spawnPatterns/spawnPattern.gd" id="1_dkmtg"]
+[ext_resource type="Script" path="res://objects/spawner/spawnPatterns/spawnPoints.gd" id="2_tf1bx"]
+
+[sub_resource type="Resource" id="Resource_fu6dn"]
+script = ExtResource("2_tf1bx")
+list = Array[Vector2]([Vector2(-10, 180)])
+
+[sub_resource type="Resource" id="Resource_uahat"]
+script = ExtResource("2_tf1bx")
+list = Array[Vector2]([Vector2(-10, 220)])
+
+[sub_resource type="Resource" id="Resource_e4hdt"]
+script = ExtResource("2_tf1bx")
+list = Array[Vector2]([Vector2(-10, 260)])
+
+[sub_resource type="Resource" id="Resource_armlb"]
+script = ExtResource("2_tf1bx")
+list = Array[Vector2]([Vector2(-10, 300)])
+
+[sub_resource type="Resource" id="Resource_dedpk"]
+script = ExtResource("2_tf1bx")
+list = Array[Vector2]([Vector2(-10, 340)])
+
+[resource]
+script = ExtResource("1_dkmtg")
+toSpawn = "BIRD"
+spawnDistance = 64
+spawnLocations = Array[ExtResource("2_tf1bx")]([SubResource("Resource_fu6dn"), SubResource("Resource_uahat"), SubResource("Resource_e4hdt"), SubResource("Resource_armlb"), SubResource("Resource_dedpk")])

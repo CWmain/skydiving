@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ka5yhyjt4ila"]
+[gd_scene load_steps=5 format=3 uid="uid://ka5yhyjt4ila"]
 
 [ext_resource type="Script" path="res://objects/spawner/spawner.gd" id="1_eqgs2"]
+[ext_resource type="Resource" uid="uid://btt87ijn470b8" path="res://objects/spawner/spawnPatterns/line.tres" id="2_v0pyk"]
+[ext_resource type="Resource" uid="uid://dnu7e46ouf633" path="res://objects/spawner/spawnPatterns/downRight.tres" id="4_robtp"]
+[ext_resource type="Resource" uid="uid://c7w2birsuyoji" path="res://objects/spawner/spawnPatterns/downLeft.tres" id="4_tqf28"]
 
 [node name="Spawner" type="Node"]
 script = ExtResource("1_eqgs2")
+birdSpawns = Array[Resource("res://objects/spawner/spawnPatterns/spawnPattern.gd")]([ExtResource("4_tqf28"), ExtResource("2_v0pyk"), ExtResource("4_robtp")])
